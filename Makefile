@@ -5,13 +5,13 @@ debian-binary:
 	echo '2.0' > debian-binary
 
 control.tar.gz: md5sums control
-	tar czf control.tar.gz md5sums control
+	tar czf control.tar.gz control #md5sums
 
 data.tar.gz: tmp/empty
 	tar czf data.tar.gz tmp/empty
 
-md5sums: tmp/empty
-	md5sum tmp/empty > md5sums
+#md5sums: tmp/empty
+#	md5sum tmp/empty > md5sums
 
 # Note: Maintainer and Description needed to avoid warning from dpkg -L
 control:
@@ -25,4 +25,4 @@ tmp:
 
 .PHONY: clean
 clean:
-	rm -r debian-binary control.tar.gz data.tar.gz control md5sums tmp/empty tmp example.deb
+	rm -r debian-binary control.tar.gz data.tar.gz control tmp/empty tmp example.deb #md5sums
